@@ -17,7 +17,13 @@ class Client(discord.Client):
     async def on_ready(self):
         print(f'Logged on as {self.user}!')
         self.check_time.start()
-
+        
+    async def on_message(self, message):
+        if message.author == self.user:
+            return
+        elif message.lower == 'house':
+            await message.channel.send(f'More mouse bites, {message.author}!')
+            
     @tasks.loop(seconds=30) # check twice per min
     async def check_time(self):
         now = datetime.now(pst_timezone)
