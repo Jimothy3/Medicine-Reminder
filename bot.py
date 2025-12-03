@@ -13,6 +13,13 @@ channel_id = 1403213173875806370
 user_id = 753004547248619532
 mention = f"<@{user_id}>"
 
+# keywords
+help_keyword = 'words'
+keyword_house = 'house'
+keyword_doctor = 'doctor'
+keyword_dr = 'dr'
+keyword_lupus = 'lupus'
+
 class Client(discord.Client):
     async def on_ready(self):
         print(f'Logged on as {self.user}!')
@@ -22,8 +29,18 @@ class Client(discord.Client):
     async def on_message(self, message):
         if message.author == self.user:
             return
-        if message.content.lower() == 'house':
+            
+            # HELP CMD
+        if message.content.lower() == help_keyword:
+            await message.channel.send("Doctor House Commands\n_________________\n1.) words\n2.) house/doctor/dr\n3.) lupus")
+
+            # DR HOUSES NAME CMD
+        if keyword_house.lower() or keyword_doctor.lower() or keyword_dr.lower() in message.content.lower():
             await message.channel.send(f'More mouse bites, {message.author}!')
+
+            # LUPUS CMD
+        if keyword_lupus.lower() in message.content.lower():
+            await message.channel.send('It is NEVER lupus.')
             
     @tasks.loop(seconds=30) # check twice per min
     async def check_time(self):
