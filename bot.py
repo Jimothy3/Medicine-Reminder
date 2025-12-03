@@ -16,24 +16,24 @@ mention = f"<@{user_id}>"
 class Client(discord.Client):
     async def on_ready(self):
         print(f'Logged on as {self.user}!')
+        self.last_sent_date = None
         self.check_time.start()
         
     async def on_message(self, message):
         if message.author == self.user:
             return
-        elif message.lower == 'house':
+        if message.content.lower() == 'house':
             await message.channel.send(f'More mouse bites, {message.author}!')
             
     @tasks.loop(seconds=30) # check twice per min
     async def check_time(self):
         now = datetime.now(pst_timezone)
-        
-        if now.hour == 19 and now.minute == 00:
-            channel = self.get_channel(channel_id)
-            if channel:
-             await channel.send(
-                f"{mention} You know what's funnier than one seizure? go take your meds"
-             )
+        if now.hour == 19 and now.minute == 0:
+            if self.last_sent_date != now.date():
+                channel = self.get_channel(channel_id)
+                if channel:
+                    await channel.send(f"{mention} You know what's funnier than one seizure? go take your meds")
+                self.last_sent_date = now.date()
 
 intents = discord.Intents.default()
 intents.message_content = True
