@@ -37,13 +37,13 @@ class Client(discord.Client):
             # DR HOUSES NAME CMD
         if keyword_house.lower() in message.content.lower():
             await message.channel.send(f'More mouse bites, {message.author}!')
-        elif keyword_doctor.lower in message.content.lower():
+        if keyword_doctor.lower in message.content.lower():
             await message.channel.send(f'{message.author}. You have herpes')
-        elif keyword_dr.lower in message.content.lower():
+        if keyword_dr.lower in message.content.lower():
             await message.channel.send(f'{message.author}, somewhere out there, there is a tree, tirelessly producing oxygen so you can breathe. I think you owe it an apology.')
             
             # LUPUS CMD
-        elif keyword_lupus.lower() in message.content.lower():
+        if keyword_lupus.lower() in message.content.lower():
             await message.channel.send('It is NEVER lupus.')
             
     @tasks.loop(seconds=30) # check twice per min
