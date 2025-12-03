@@ -7,7 +7,7 @@ import pytz
 pst_timezone = pytz.timezone("US/Pacific")
 
 # channel int
-channel_id = 1445629047341060288
+channel_id = 1403213173875806370
 
 # seth id
 user_id = 753004547248619532
