@@ -2,6 +2,7 @@ import os
 import discord
 from discord.ext import tasks
 from datetime import datetime
+import random
 import pytz
 
 # parsing in DMS Disorders for !Diagnose CMD
@@ -21,9 +22,8 @@ def parse_file(file_path):
                 data.append(disorder)
     
     return data
-test = parse_file(file_path)
-print(test)
-
+disorder_array = parse_file(file_path)
+index = random.randint(0,145)
 # PST timezone
 pst_timezone = pytz.timezone("US/Pacific")
 
@@ -40,6 +40,7 @@ keyword_house = 'house'
 keyword_doctor = 'doctor'
 keyword_dr = 'dr'
 keyword_lupus = 'lupus'
+keyword_diagnose = '!diagnose'
 
 class Client(discord.Client):
     async def on_ready(self):
@@ -65,9 +66,13 @@ class Client(discord.Client):
         if keyword_dr.lower() in message.content.lower():
             await message.channel.send(f'{message.author}, somewhere out there, there is a tree, tirelessly producing oxygen so you can breathe. I think you owe it an apology.')
             
-            # LUPUS CMD
+            # LUPUS CMD && !Diagnose CMD
         if keyword_lupus.lower() in message.content.lower():
             await message.channel.send('It is NEVER lupus.')
+
+        if keyword_diagnose.lower() in message.content.lower():
+            index = random.randint(0,145)
+            await message.channel.send(f'You have {disorder_array[index]}.')
             
     @tasks.loop(seconds=30) # check twice per min
     async def check_time(self):
