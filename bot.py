@@ -1,7 +1,14 @@
+import os
 import discord
 from discord.ext import tasks
 from datetime import datetime
 import pytz
+
+# parsing in DMS Disorders for !Diagnose CMD
+BASE_DIR = os.path.dirname(__file__)
+file_path = os.path.join(BASE_DIR, "DMS_Disorders.txt")
+print("File path:", file_path)
+print("File exists:", os.path.exists(file_path))
 
 # PST timezone
 pst_timezone = pytz.timezone("US/Pacific")
@@ -62,6 +69,5 @@ intents = discord.Intents.default()
 intents.message_content = True
 
 client = Client(intents=intents)
-import os
 TOKEN = os.getenv("DISCORD_TOKEN") # gets the token from Railway
 client.run(TOKEN)
