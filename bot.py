@@ -6,7 +6,7 @@ import pytz
 
 # parsing in DMS Disorders for !Diagnose CMD
 BASE_DIR = os.path.dirname(__file__)
-file_path = os.path.join(BASE_DIR, "DMS_Disorders.txt")
+file_path = os.path.join(BASE_DIR, "DSM_Disorders.txt")
 print("File path:", file_path)
 print("File exists:", os.path.exists(file_path))
 
