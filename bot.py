@@ -42,6 +42,21 @@ keyword_dr = 'dr'
 keyword_lupus = 'lupus'
 keyword_diagnose = '!diagnose'
 
+# insult generator
+insult_array = []
+insult_array.append(', ARE YOU BEING INTENTIONALLY DENSE?')
+insult_array.append(", I'm sorry, I'm about to lose you because I'm about to drive into a tunnel in a canyon on an airplane while hanging up on you.")
+insult_array.append(', I hate tea.')
+insult_array.append(', sometimes the best gift is the gift of never seeing you again.')
+insult_array.append(', gotta go! Building full of sick people, if I hurry, maybe I can avoid them.')
+insult_array.append(', you are turning white.')
+insult_array.append(', you must be full of bologna. Lot of it.')
+insult_array.append(', if your DNA was off by one percentage point, you would be a dolphin.')
+insult_array.append(', good news is, you are running out of organs to fail.')
+insult_array.append(', speaking of which, if you are particularly annoying, you may see me reach for this - this is Vicodin. Its mine.')
+insult_array.append(', you think your dad wants to kill you because youre so ugly? Be grateful, anywhere else in the animal kingdom, your parents wouldve eaten you at birth.')
+insult_array.append(', good thing I brought my Axe-Cane.')
+
 class Client(discord.Client):
     async def on_ready(self):
         print(f'Logged on as {self.user}!')
@@ -54,7 +69,7 @@ class Client(discord.Client):
             
             # HELP CMD
         if message.content.lower() == help_keyword:
-            await message.channel.send("Doctor House Commands\n_________________\n1.) words\n2.) house/doctor/dr\n3.) lupus")
+            await message.channel.send("Doctor House Commands\n_________________\n1.) words\n2.) house/doctor/dr\n3.) lupus\n4.)!Diagnose")
 
             # DR HOUSES NAME CMD
         if keyword_house.lower() in message.content.lower():
@@ -72,7 +87,8 @@ class Client(discord.Client):
 
         if keyword_diagnose.lower() in message.content.lower():
             index = random.randint(0,145)
-            await message.channel.send(f'You have {disorder_array[index]}.')
+            mean_index = random.randint(0, 11)
+            await message.channel.send(f'You have {disorder_array[index]}{insult_array[mean_index]}')
             
     @tasks.loop(seconds=30) # check twice per min
     async def check_time(self):
