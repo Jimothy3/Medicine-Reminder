@@ -8,7 +8,21 @@ import pytz
 BASE_DIR = os.path.dirname(__file__)
 file_path = os.path.join(BASE_DIR, "DSM_Disorders.txt")
 print("File path:", file_path)
-print("File exists:", os.path.exists(file_path))
+print("File exists:", os.path.exists(file_path)) # outputs if we see the disorder file
+
+def parse_file(file_path):
+    data = []
+    with open(file_path, 'r') as f:
+        for line in f:
+            cleaned_line = line.strip()
+            if cleaned_line:
+                parts = cleaned_line.split(',')
+                disorder = parts[0].strip()
+                data.append(disorder)
+    
+    return data
+test = parse_file(file_path)
+print(test)
 
 # PST timezone
 pst_timezone = pytz.timezone("US/Pacific")
