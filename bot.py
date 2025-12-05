@@ -39,6 +39,8 @@ help_keyword = 'words'
 keyword_house = 'house'
 keyword_doctor = 'doctor'
 keyword_dr = 'dr'
+keyword_doctuh = 'doctuh'
+keyword_housenberg = "you're housenberg"
 keyword_lupus = 'lupus'
 keyword_diagnose = '!diagnose'
 
@@ -80,6 +82,12 @@ class Client(discord.Client):
             
         if keyword_dr.lower() in message.content.lower():
             await message.channel.send(f'{message.author}, somewhere out there, there is a tree, tirelessly producing oxygen so you can breathe. I think you owe it an apology.')
+
+        if keyword_doctuh.lower() in message.content.lower():
+            await message.channel.send('Say my name')
+
+        if keyword_housenberg.lower() in message.content.lower():
+            await message.channel.send("You're goddamn right")
             
             # LUPUS CMD && !Diagnose CMD
         if keyword_lupus.lower() in message.content.lower():
