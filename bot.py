@@ -70,24 +70,25 @@ class Client(discord.Client):
             return
             
             # HELP CMD
-        if message.content.lower() == help_keyword:
+        elif message.content.lower() == help_keyword:
             await message.channel.send("Doctor House Commands\n_________________\n1.) words\n2.) house/doctor/dr\n3.) lupus\n4.)!Diagnose")
 
             # DR HOUSES NAME CMD
-        if keyword_house.lower() in message.content.lower():
-            await message.channel.send(f'More mouse bites, {message.author}!')
-            
-        if keyword_doctor.lower() in message.content.lower():
+        elif keyword_housenberg.lower() in message.content.lower():
+            await message.channel.send("You're goddamn right")
+
+        elif keyword_doctor.lower() in message.content.lower():
             await message.channel.send(f'{message.author}. You have herpes')
-            
-        if keyword_dr.lower() in message.content.lower():
+
+        elif keyword_dr.lower() in message.content.lower():
             await message.channel.send(f'{message.author}, somewhere out there, there is a tree, tirelessly producing oxygen so you can breathe. I think you owe it an apology.')
 
-        if keyword_doctuh.lower() in message.content.lower():
+        elif keyword_doctuh.lower() in message.content.lower():
             await message.channel.send('Say my name')
+            
+        elif keyword_house.lower() in message.content.lower():
+            await message.channel.send(f'More mouse bites, {message.author}!')
 
-        if keyword_housenberg.lower() in message.content.lower():
-            await message.channel.send("You're goddamn right")
             
             # LUPUS CMD && !Diagnose CMD
         if keyword_lupus.lower() in message.content.lower():
