@@ -74,6 +74,9 @@ class Client(discord.Client):
             await message.channel.send("Doctor House Commands\n_________________\n1.) words\n2.) house/doctor/dr/doctuh\n3.) lupus\n4.)!Diagnose")
 
             # DR HOUSES NAME CMD
+        elif keyword_housenberg.lower() in message.content.lower():
+                await message.channel.send("You're goddamn right")
+            
         elif keyword_doctor.lower() in message.content.lower():
             await message.channel.send(f'{message.author}. You have herpes')
 
@@ -82,8 +85,6 @@ class Client(discord.Client):
 
         elif keyword_doctuh.lower() in message.content.lower(): # Little Easter Egg
             await message.channel.send('Say my name')
-            if keyword_housenberg.lower() in message.content.lower():
-                await message.channel.send("You're goddamn right")
                     
         elif keyword_house.lower() in message.content.lower():
             await message.channel.send(f'More mouse bites, {message.author}!')
