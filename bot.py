@@ -40,7 +40,7 @@ keyword_house = 'house'
 keyword_doctor = 'doctor'
 keyword_dr = 'dr'
 keyword_doctuh = 'doctuh'
-keyword_housenberg = "you're housenberg"
+keyword_housenberg = "housenberg"
 keyword_lupus = 'lupus'
 keyword_diagnose = '!diagnose'
 
@@ -71,21 +71,20 @@ class Client(discord.Client):
             
             # HELP CMD
         elif message.content.lower() == help_keyword:
-            await message.channel.send("Doctor House Commands\n_________________\n1.) words\n2.) house/doctor/dr\n3.) lupus\n4.)!Diagnose")
+            await message.channel.send("Doctor House Commands\n_________________\n1.) words\n2.) house/doctor/dr/doctuh\n3.) lupus\n4.)!Diagnose")
 
             # DR HOUSES NAME CMD
-        elif keyword_housenberg.lower() in message.content.lower():
-            await message.channel.send("You're goddamn right")
-
         elif keyword_doctor.lower() in message.content.lower():
             await message.channel.send(f'{message.author}. You have herpes')
 
         elif keyword_dr.lower() in message.content.lower():
             await message.channel.send(f'{message.author}, somewhere out there, there is a tree, tirelessly producing oxygen so you can breathe. I think you owe it an apology.')
 
-        elif keyword_doctuh.lower() in message.content.lower():
+        elif keyword_doctuh.lower() in message.content.lower(): # Little Easter Egg
             await message.channel.send('Say my name')
-            
+                if keyword_housenberg.lower() in message.content.lower():
+                    await message.channel.send("You're goddamn right")
+                    
         elif keyword_house.lower() in message.content.lower():
             await message.channel.send(f'More mouse bites, {message.author}!')
 
